@@ -1,0 +1,112 @@
+@import "colors.css";
+
+* {
+    font-family: "JetBrains Mono Nerd Font", "JetBrainsMono NF", Roboto, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    min-height: 0;
+}
+
+/* Прозрачный базовый контейнер для парящего эффекта */
+window#waybar {
+    background: transparent;
+}
+
+/* Общий стиль капсул (островков) */
+.modules-left,
+.modules-center,
+.modules-right {
+    background: @bg;
+    border: 1px solid @border-col;
+    border-radius: 12px;
+    padding: 2px 6px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* WORKSPACES */
+#workspaces {
+    background: transparent;
+    padding: 0;
+}
+
+#workspaces button {
+    padding: 3px 8px;
+    margin: 3px 2px;
+    border-radius: 8px;
+    color: @fg-muted;
+    background: transparent;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#workspaces button:hover {
+    color: @fg;
+    background: @hover-bg;
+}
+
+#workspaces button.active {
+    color: @bg-darker;
+    background: @blue;
+    min-width: 24px;
+}
+
+#workspaces button.urgent {
+    color: @bg-darker;
+    background: @red;
+}
+
+/* WINDOW TITLE */
+#window {
+    color: @purple;
+    padding: 0 10px;
+}
+
+window#waybar.empty #window {
+    background: transparent;
+    border: none;
+}
+
+/* RIGHT MODULES: общий стиль элементов внутри правой капсулы */
+#tray,
+#custom-weather,
+#language,
+#clock {
+    padding: 3px 10px;
+    margin: 2px 0;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+#tray {
+    color: @fg;
+}
+
+#custom-weather {
+    color: @yellow;
+}
+
+#language {
+    color: @cyan;
+}
+
+#clock {
+    color: @orange;
+}
+
+/* Эффект подсветки при наведении */
+#custom-weather:hover,
+#language:hover,
+#clock:hover {
+    background: @hover-bg;
+}
+
+/* Стилизация календаря во всплывающем окне */
+tooltip {
+    background: @bg-alt;
+    border: 1px solid @border-col;
+    border-radius: 10px;
+}
+
+tooltip label {
+    color: @fg;
+    padding: 6px;
+}
