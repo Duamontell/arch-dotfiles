@@ -1,0 +1,50 @@
+theme = "monokai_pro"
+
+[editor]
+bufferline = "multiple"
+cursorline = true
+gutters = ["diagnostics", "spacer", "line-numbers", "spacer", "diff"]
+line-number = "relative"
+mouse = true
+popup-border = "all"
+rulers = [120]
+scrolloff = 8
+true-color = true
+undercurl = true
+
+[editor.file-picker]
+hidden = false
+ignore = false
+
+[editor.auto-save]
+focus-lost = true
+
+[editor.auto-save.after-delay]
+enable = true
+timeout = 1500
+
+[editor.indent-guides]
+render = true
+
+[editor.inline-diagnostics]
+cursor-line = "error"
+
+[editor.lsp]
+auto-signature-help = true
+display-color-swatches = true
+display-inlay-hints = false
+display-messages = true
+display-progress-messages = false
+display-signature-help-docs = true
+enable = true
+goto-reference-include-declaration = true
+snippets = true
+
+[editor.soft-wrap]
+enable = true
+
+[keys.normal]
+C-w = ":buffer-close"
+S-tab = ":buffer-previous"
+tab = ":buffer-next"
+

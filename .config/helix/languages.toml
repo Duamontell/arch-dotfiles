@@ -1,0 +1,60 @@
+[[language]]
+auto-format = false
+language-servers = ["lua-language-server"]
+name = "lua"
+
+[language.formatter]
+args = ["-"]
+command = "stylua"
+
+[[language]]
+auto-format = false
+language-servers = ["nixd"]
+name = "nix"
+
+[language.formatter]
+command = "nixfmt"
+
+[[language]]
+language-servers = ["biome"]
+name = "json"
+
+[language.formatter]
+args = ["format"]
+command = "biome"
+
+[[language]]
+language-servers = ["biome"]
+name = "javascript"
+
+[language.formatter]
+args = ["format"]
+command = "biome"
+
+[[language]]
+language-servers = ["biome"]
+name = "typescript"
+
+[language.formatter]
+args = ["format"]
+command = "biome"
+
+[[language]]
+language-servers = ["biome"]
+name = "jsx"
+
+[language.formatter]
+args = ["format"]
+command = "biome"
+
+[[language]]
+language-servers = ["biome"]
+name = "tsx"
+
+[language.formatter]
+args = ["format"]
+command = "biome"
+
+[language-server.biome]
+args = ["lsp-proxy"]
+command = "biome"

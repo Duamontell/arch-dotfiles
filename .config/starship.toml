@@ -1,0 +1,22 @@
+add_newline = true
+format = "$all"
+right_format = "$time"
+
+[directory]
+truncation_symbol = "../"
+
+[hostname]
+format = "[$ssh_symbol$hostname]($style) "
+ssh_only = false
+style = "bold purple"
+
+[time]
+disabled = false
+format = "[$time]($style)"
+style = "bold yellow"
+
+[username]
+format = "[$user]($style)@"
+show_always = true
+style_root = "red"
+style_user = "yellow"
