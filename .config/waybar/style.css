@@ -1,165 +1,177 @@
-@import "colors.css";
+/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
+/*DARK_PURPLE*/
 
+
+@import 'wallust/colors-waybar.css';
+
+@define-color main-color @color15;
 * {
-    font-family: "JetBrains Mono Nerd Font", "JetBrainsMono NF", Roboto, sans-serif;
-    font-size: 13px;
-    font-weight: bold;
-    min-height: 0;
+  all: unset; /*this is really important to isolate waybar from gtk*/
+  font: bold 14px "Iosevka Nerd Font Propo" ;
+   font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  border: none;
+  
+  border-radius: 0;
+  box-shadow: none;
+  text-shadow: none;
 }
 
-/* Прозрачный базовый контейнер для парящего эффекта */
+
 window#waybar {
-    background: transparent;
+
+  /*background: alpha(@background, 0.1);*/
+      background: rgba (0, 0, 0, 0.6);
+  border-radius: 5px;
+  /*border: 0px solid alpha(@background,0.8);*/
 }
 
-/* Общий стиль капсул (островков) */
-.modules-left,
-.modules-center,
-.modules-right {
-    background: @bg;
-    border: 1px solid @border-col;
-    border-radius: 12px;
-    padding: 2px 6px;
-}
-
-/* Если окна нет — полностью убираем центральную капсулу */
-window#waybar.empty .modules-center {
-    background: transparent;
-    border-color: transparent;
-    padding: 0;
-}
-
-/* WORKSPACES */
-#workspaces {
-    background: transparent;
-    padding: 0;
-}
-
-#workspaces button {
-    padding: 3px 8px;
-    margin: 3px 2px;
-    border-radius: 8px;
-    color: @fg-muted;
-    background: transparent;
-    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-#workspaces button:hover {
-    color: @fg;
-    background: @hover-bg;
-}
-
-#workspaces button.active {
-    color: @bg-darker;
-    background: @blue;
-    min-width: 24px;
-}
-
-#workspaces button.urgent {
-    color: @bg-darker;
-    background: @red;
-}
-
-/* WINDOW TITLE */
 #window {
-    color: @purple;
-    padding: 0 10px;
+  padding: 0px 8px;
+  margin: 5px 4px 5px 4px;
+  background: alpha(@color12, 0.3);
+  border-radius: 5px;
+  color: lighter(@main-color);
 }
 
-/* RIGHT MODULES: общий стиль элементов внутри правой капсулы */
-#tray,
-#network,
-#bluetooth,
-#pulseaudio,
-#battery,
-#custom-weather,
-#language,
-#clock {
-    padding: 3px 10px;
-    margin: 2px 0;
-    border-radius: 8px;
-    transition: all 0.2s ease-in-out;
-}
-
-#tray {
-    color: @fg;
-}
-
-#network {
-    color: @green;
-}
-
-#network.disconnected,
-#network.disabled {
-    color: @red;
-}
-
-#bluetooth {
-    color: @blue;
-}
-
-#bluetooth.disabled,
-#bluetooth.off {
-    color: @fg-muted;
-}
-
-#pulseaudio {
-    color: @magenta;
-}
-
-#pulseaudio.muted {
-    color: @red;
-}
-
-#battery {
-    color: @green;
-}
-
-#battery.charging,
-#battery.plugged {
-    color: @cyan;
-}
-
-#battery.warning {
-    color: @yellow;
-}
-
-#battery.critical {
-    color: @red;
-}
-
-#custom-weather {
-    color: @yellow;
-}
-
-#language {
-    color: @cyan;
-}
-
-#clock {
-    color: @orange;
-}
-
-/* Эффект подсветки при наведении */
-#tray:hover,
-#network:hover,
-#bluetooth:hover,
-#pulseaudio:hover,
-#battery:hover,
-#custom-weather:hover,
-#language:hover,
-#clock:hover {
-    background: @hover-bg;
-}
-
-/* Стилизация календаря во всплывающем окне */
 tooltip {
-    background: @bg-alt;
-    border: 1px solid @border-col;
-    border-radius: 10px;
+  background: alpha(@background, 0.8);
+  border: 2px solid alpha(lighter(@main-color), 0.8);
+  border-radius: 10px;
 }
 
 tooltip label {
-    color: @fg;
-    padding: 6px;
+  color: @freground;
+}
+
+#custom-arrow-right {
+  color: @main-color;
+  margin: 0px 4px;
+}
+
+#cpu,
+#memory,
+#temperature,
+#disk,
+#custom-updates {
+  padding: 0px 6px;
+  margin: 6px 4px;
+  background: alpha(darker(@main-color), 0.4);
+  color: @main-color;
+  border-radius: 10px;
+}
+
+#workspaces {
+  margin: 4px 4px;
+  background: alpha(lighter(@color4), 0.09);
+  border-radius: 5px;
+}
+
+#workspaces button {
+  padding: 0px 4px;
+  margin: 0px 0px;
+  color: alpha(@foreground, 0.3);
+}
+
+#workspaces button.active,
+#workspaces button.focused {
+  transition: color 0.5s;
+  color: lighter(@main-color);
+
+}
+
+
+#workspaces button.urgent,
+#workspaces button:hover {
+  color: @color12;
+  background-color: transparent;
+}
+#demo,
+#control-center {
+  padding: 0px 6px;
+  margin: 4px 2px 4px 2px ;
+  color: lighter(@color3);
+  background: alpha(lighter(@main-color),0.08);
+  border-radius: 5px;
+}
+
+#bluetooth,
+#network,
+#pulseaudio {
+  padding: 0px 0 0 4px;
+}
+
+#pulseaudio-slider slider {
+  min-height: 0px;
+  min-width: 0px;
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+#pulseaudio-slider {
+  margin: 6px;
+}
+
+#pulseaudio-slider highlight {
+  border-radius: 8px;
+  background-color: lighter(@main-color);
+}
+
+#language {
+  padding: 0px 3px 2px 0px;
+}
+
+#custom-arrow-left {
+  color: lighter(@main-color);
+  margin: 0px 4px;
+}
+
+#custom-notifications,
+#custom-weather,
+#custom-theme-switcher {
+  padding: 0px 8px;
+  margin: 8px 4px;
+  color: @main-color;
+  background: alpha(darker(@main-color), 0.8);
+  border-radius: 10px;
+}
+#tray {
+  padding: 0px 8px;
+    margin: 4px 2px 4px 2px;
+  background: alpha(@color12,0.3);
+  border-radius: 5px;
+  color: lighter(@main-color);
+}
+
+#custom-menu,
+#custom-power {
+  padding: 0px 8px;
+  margin: 6px 6px 6px 4px;
+  background: alpha(@color12,0.3);
+  border-radius: 5px;
+  color: lighter(@main-color);
+}
+
+
+#clock {
+  padding: 0px 8px;
+  margin: 5px 2px 5px 4px;
+  background: alpha(@color12,0.3);
+  border-radius: 5px;
+  color: lighter(@main-color);
+}
+
+#power,
+#bluetooth,
+
+
+#mpd,
+#pulseaudio,
+
+#battery,
+
+
+#mpris{
+ padding: 4px 4px;
+  color: lighter(@main-color);
 }
