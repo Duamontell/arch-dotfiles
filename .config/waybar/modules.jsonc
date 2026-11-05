@@ -1,0 +1,239 @@
+{
+  // ═══ Left: Niri workspaces ════════════════════════════════════════════════
+  // Workspace numbers come from Niri; active/occupied/empty states are
+  // coloured in style.css.
+  "niri/workspaces": {
+    "format": "{value}",
+    "all-outputs": false
+  },
+
+  // ═══ Left: resource drawer ════════════════════════════════════════════════
+  "group/info": {
+    "orientation": "horizontal",
+    "drawer": {
+      "transition-duration": 250,
+      "transition-left-to-right": true
+    },
+    "modules": [
+      "custom/info-toggle",
+      "cpu",
+      "memory",
+      "temperature"
+    ]
+  },
+
+  "custom/info-toggle": {
+    "format": "󰁙",
+    "tooltip": false,
+    "on-click": "kitty --title btop sh -c 'btop'"
+  },
+
+  "cpu": {
+    "interval": 3,
+    "format": "󰘚 {usage}%",
+    "on-click": "kitty --title btop sh -c 'btop'"
+  },
+
+  "memory": {
+    "interval": 5,
+    "format": "{used:0.1f}G 󰾆",
+    "format-alt": "{percentage}% 󰾆",
+    "format-alt-click": "click",
+    "tooltip": true,
+    "on-click": "kitty --title btop sh -c 'btop'"
+  },
+
+  "temperature": {
+    "interval": 5,
+    // Keep the old sensor list: Waybar takes the first path that exists.
+    // hwmon6 is dynamic, so thermal_zone0 is the stable fallback here.
+    "hwmon-path": [
+      "/sys/class/hwmon/hwmon6/temp1_input",
+      "/sys/class/thermal/thermal_zone0/temp"
+    ],
+    "critical-threshold": 82,
+    "format": "{temperatureC}°C 󰈸",
+    "format-critical": "{temperatureC}°C 󰈸",
+    "tooltip-format": "CPU temperature: {temperatureC}°C",
+    "on-click": "kitty --title btop sh -c 'btop'"
+  },
+
+  // ═══ Center: focused window ═══════════════════════════════════════════════
+  "niri/window": {
+    "format": "{title}",
+    "max-length": 36,
+    "icon": true,
+    "icon-size": 16,
+    "separate-outputs": false
+  },
+
+  // ═══ Right: presentation mode ═════════════════════════════════════════════
+  "idle_inhibitor": {
+    "format": "{icon}",
+    "format-icons": {
+      "activated": "",
+      "deactivated": ""
+    },
+    "tooltip-format-activated": "Idle inhibition: ON\nScreen stays awake",
+    "tooltip-format-deactivated": "Idle inhibition: OFF\nScreen may sleep"
+  },
+
+  // ═══ Right: system tray ═══════════════════════════════════════════════════
+  "tray": {
+    "icon-size": 16,
+    "spacing": 6
+  },
+
+  // ═══ Right: keyboard layout ═══════════════════════════════════════════════
+  "niri/language": {
+    "format": "{}",
+    "format-en": "en",
+    "format-us": "en",
+    "format-ru": "ru"
+  },
+
+  // ═══ Right: weather (wttr.in, no external script) ════════════════════════
+  "custom/weather": {
+    "format": "{text}",
+    "return-type": "json",
+    "interval": 900,
+    "tooltip": true,
+    "escape": true,
+    "exec": "raw=$(curl -fsS --max-time 10 'https://wttr.in/?format=%c%t|%C|%f|%w' 2>/dev/null); case \"$raw\" in \"\"|*\"<\"*) printf '{\"text\":\"󰖐 --\",\"tooltip\":\"Weather unavailable\\\\nNo internet connection\\\\nWill retry automatically\"}\\n' ;; *) printf '%s\\n' \"$raw\" | { IFS='|' read -r text cond feels wind; text=$(printf '%s' \"$text\" | tr -d '\"'); cond=$(printf '%s' \"$cond\" | tr -d '\"'); feels=$(printf '%s' \"$feels\" | tr -d '\"'); wind=$(printf '%s' \"$wind\" | tr -d '\"'); printf '{\"text\":\"%s\",\"tooltip\":\"%s\\\\nFeels like: %s\\\\nWind: %s\"}\\n' \"$text\" \"$cond\" \"$feels\" \"$wind\"; } ;; esac"
+  },
+
+  // ═══ Right: sound / network / bluetooth / battery capsule ═════════════════
+  "group/system": {
+    "orientation": "horizontal",
+    "modules": [
+      "pulseaudio",
+      "network",
+      "bluetooth",
+      "battery"
+    ]
+  },
+
+  "pulseaudio": {
+    "format": "{icon}",
+    "format-muted": "󰖁",
+    "format-icons": {
+      "headphone": "󰋋",
+      "headset": "󰋋",
+      "hands-free": "󰋋",
+      "default": [
+        "󰕿",
+        "󰖀",
+        "󰕾"
+      ]
+    },
+    "scroll-step": 5,
+    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+    "on-click-right": "pavucontrol -t 3",
+    "on-scroll-up": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%+",
+    "on-scroll-down": "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ 5%-",
+    "tooltip-format": "{volume}% • {desc}",
+    "smooth-scrolling-threshold": 1
+  },
+
+  "network": {
+    "interval": 5,
+    "format": "{icon}",
+    "format-wifi": "{icon}",
+    "format-ethernet": "{icon}",
+    "format-linked": "{icon}",
+    "format-disconnected": "{icon}",
+    "format-disabled": "{icon}",
+    "format-icons": {
+      "wifi": [
+        "󰤯",
+        "󰤟",
+        "󰤢",
+        "󰤥",
+        "󰤨"
+      ],
+      "ethernet": "󰈀",
+      "linked": "󰈀",
+      "disconnected": "󰖪",
+      "disabled": "󰖪",
+      "default": "󰖪"
+    },
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}\n↓ {bandwidthDownBits}  ↑ {bandwidthUpBits}",
+    "tooltip-format-ethernet": "{ifname}\n{ipaddr}\n↓ {bandwidthDownBits}  ↑ {bandwidthUpBits}",
+    "tooltip-format-linked": "{ifname}\nNo IP address",
+    "tooltip-format-disconnected": "Disconnected",
+    "tooltip-format-disabled": "Network disabled",
+    "on-click": "networkmanager_dmenu",
+    "on-click-right": "kitty --title nmtui sh -c 'nmtui'"
+  },
+
+  "bluetooth": {
+    "format": "󰂲",
+    "format-on": "󰂯",
+    "format-off": "󰂲",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂱",
+    "format-no-controller": "󰂲",
+    "tooltip-format": "{controller_alias}",
+    "tooltip-format-on": "{controller_alias}\nNo devices connected",
+    "tooltip-format-connected": "{controller_alias}\n{num_connections} connected\n{device_enumerate}",
+    "tooltip-format-off": "Bluetooth off",
+    "tooltip-format-disabled": "Bluetooth disabled",
+    "tooltip-format-no-controller": "No Bluetooth controller",
+    "tooltip-format-enumerate-connected": "• {device_alias}",
+    "tooltip-format-enumerate-connected-battery": "• {device_alias} ({device_battery_percentage}%)",
+    "on-click": "kitty --title Bluetooth sh -c 'command -v bluetuith >/dev/null 2>&1 && exec bluetuith || exec bluetoothctl'"
+  },
+
+  "battery": {
+    "interval": 30,
+    "states": {
+      "warning": 30,
+      "critical": 15
+    },
+    "format": "{icon} {capacity}%",
+    "format-charging": "󰂄 {capacity}%",
+    "format-plugged": "󰚥 {capacity}%",
+    "format-full": "{icon} {capacity}%",
+    "format-icons": [
+      "󰂎",
+      "󰁺",
+      "󰁻",
+      "󰁼",
+      "󰁽",
+      "󰁾",
+      "󰁿",
+      "󰂀",
+      "󰂁",
+      "󰂂",
+      "󰁹"
+    ],
+    "tooltip": true,
+    "tooltip-format": "Battery: {capacity}%\nTime: {time}\nPower: {power} W"
+  },
+
+  // ═══ Right: clock (must stay the right-most module) ══════════════════════
+  "clock": {
+    "interval": 10,
+    "format": "{:%d.%m %H:%M}",
+    "tooltip": true,
+    "tooltip-format": "<span color='#7dcfff'><b>{:%A, %d %B %Y}</b></span>\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "on-scroll": 1,
+      "iso8601": true,
+      "format": {
+        "months": "<span color='#7dcfff'><b>{}</b></span>",
+        "days": "<span color='#c0caf5'>{}</span>",
+        "weeks": "<span color='#565f89'>W{}</span>",
+        "weekdays": "<span color='#bb9af7'><b>{}</b></span>",
+        "today": "<span color='#e0af68'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
+  }
+}

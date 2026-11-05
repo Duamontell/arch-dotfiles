@@ -1,0 +1,35 @@
+{
+  // ── Bar geometry (kept from the old setup) ────────────────────────────────
+  "layer": "top",
+  "position": "top",
+  "height": 34,
+  "width": 1200,
+  "margin-top": 5,
+  "margin-left": 50,
+  "margin-right": 50,
+  "spacing": 4,
+  "fixed-center": true,
+  "reload_style_on_change": true,
+
+  // ── Module definitions ────────────────────────────────────────────────────
+  "include": [
+    "~/.config/waybar/modules.jsonc"
+  ],
+
+  // ── Layout ────────────────────────────────────────────────────────────────
+  "modules-left": [
+    "niri/workspaces",
+    "group/info"
+  ],
+  "modules-center": [
+    "niri/window"
+  ],
+  "modules-right": [
+    "idle_inhibitor",
+    "tray",
+    "niri/language",
+    "custom/weather",
+    "group/system",
+    "clock"
+  ]
+}

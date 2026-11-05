@@ -1,177 +1,253 @@
-/* ---- 💫 https://github.com/JaKooLit 💫 ---- */
-/*DARK_PURPLE*/
+@import "colors.css";
 
-
-@import 'wallust/colors-waybar.css';
-
-@define-color main-color @color15;
 * {
-  all: unset; /*this is really important to isolate waybar from gtk*/
-  font: bold 14px "Iosevka Nerd Font Propo" ;
-   font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
+  all: unset;
+  font: bold 13px "JetBrainsMono Nerd Font";
   border: none;
-  
   border-radius: 0;
   box-shadow: none;
   text-shadow: none;
 }
 
-
 window#waybar {
-
-  /*background: alpha(@background, 0.1);*/
-      background: rgba (0, 0, 0, 0.6);
-  border-radius: 5px;
-  /*border: 0px solid alpha(@background,0.8);*/
-}
-
-#window {
-  padding: 0px 8px;
-  margin: 5px 4px 5px 4px;
-  background: alpha(@color12, 0.3);
-  border-radius: 5px;
-  color: lighter(@main-color);
-}
-
-tooltip {
-  background: alpha(@background, 0.8);
-  border: 2px solid alpha(lighter(@main-color), 0.8);
+  background-color: alpha(@bg, 0.92);
+  border: 1px solid alpha(@blue, 0.14);
   border-radius: 10px;
+  color: @fg;
+}
+
+/* ── Tooltip: opaque enough to stay readable over light wallpapers ───────── */
+tooltip {
+  background-color: alpha(@bg_dark, 0.95);
+  border: 1px solid @blue;
+  border-radius: 8px;
+  padding: 8px 10px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
 }
 
 tooltip label {
-  color: @freground;
+  color: @fg;
+  font-size: 13px;
 }
 
-#custom-arrow-right {
-  color: @main-color;
-  margin: 0px 4px;
+/* ── Shared capsule look ─────────────────────────────────────────────────── */
+#workspaces,
+#info,
+#window,
+#language,
+#custom-weather,
+#system,
+#clock {
+  margin: 4px 2px;
+  border-radius: 10px;
+}
+
+#workspaces,
+#info,
+#language,
+#custom-weather,
+#system {
+  background-color: alpha(@bg_dark, 0.55);
+  border: 1px solid alpha(@blue, 0.08);
+}
+
+/* ── Workspaces ──────────────────────────────────────────────────────────── */
+#workspaces {
+  padding: 2px 4px;
+}
+
+#workspaces button {
+  min-width: 20px;
+  min-height: 20px;
+  padding: 0 6px;
+  margin: 0 1px;
+  border-radius: 8px;
+  background-color: transparent;
+  color: alpha(@fg, 0.75);
+  transition: background-color 180ms ease, color 180ms ease;
+}
+
+#workspaces button.empty {
+  color: alpha(@muted, 0.45);
+}
+
+#workspaces button.active {
+  color: @purple;
+  background-color: alpha(@purple, 0.10);
+}
+
+#workspaces button.focused {
+  color: @blue;
+  background-color: alpha(@blue, 0.16);
+}
+
+#workspaces button.urgent {
+  color: @red;
+  background-color: alpha(@red, 0.15);
+}
+
+#workspaces button:hover {
+  color: @fg;
+  background-color: alpha(@blue, 0.12);
+}
+
+/* ── Resource drawer ─────────────────────────────────────────────────────── */
+#info {
+  padding: 2px 4px;
+}
+
+#custom-info-toggle {
+  padding: 0 4px;
+  margin-right: 2px; 
+  background-color: transparent;
+  color: @blue;
 }
 
 #cpu,
 #memory,
-#temperature,
-#disk,
-#custom-updates {
-  padding: 0px 6px;
-  margin: 6px 4px;
-  background: alpha(darker(@main-color), 0.4);
-  color: @main-color;
-  border-radius: 10px;
-}
-
-#workspaces {
-  margin: 4px 4px;
-  background: alpha(lighter(@color4), 0.09);
-  border-radius: 5px;
-}
-
-#workspaces button {
-  padding: 0px 4px;
-  margin: 0px 0px;
-  color: alpha(@foreground, 0.3);
-}
-
-#workspaces button.active,
-#workspaces button.focused {
-  transition: color 0.5s;
-  color: lighter(@main-color);
-
-}
-
-
-#workspaces button.urgent,
-#workspaces button:hover {
-  color: @color12;
+#temperature {
+  margin: 0 1px;
+  padding: 0 7px;
   background-color: transparent;
 }
-#demo,
-#control-center {
-  padding: 0px 6px;
-  margin: 4px 2px 4px 2px ;
-  color: lighter(@color3);
-  background: alpha(lighter(@main-color),0.08);
-  border-radius: 5px;
+
+#cpu {
+  color: @blue;
 }
 
-#bluetooth,
-#network,
-#pulseaudio {
-  padding: 0px 0 0 4px;
+#memory {
+  color: @purple;
 }
 
-#pulseaudio-slider slider {
-  min-height: 0px;
-  min-width: 0px;
+#temperature {
+  color: @yellow;
+}
+
+#temperature.critical {
+  color: @red;
+}
+
+/* ── Focused window ──────────────────────────────────────────────────────── */
+#window {
+  padding: 0 12px;
+  background-color: alpha(@bg_dark, 0.35);
+  color: @fg;
+}
+
+window#waybar.empty #window {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
   background-color: transparent;
-  border: none;
-  box-shadow: none;
+  border-color: transparent;
+  color: transparent;
 }
 
-#pulseaudio-slider {
-  margin: 6px;
-}
-
-#pulseaudio-slider highlight {
-  border-radius: 8px;
-  background-color: lighter(@main-color);
-}
-
-#language {
-  padding: 0px 3px 2px 0px;
-}
-
-#custom-arrow-left {
-  color: lighter(@main-color);
-  margin: 0px 4px;
-}
-
-#custom-notifications,
-#custom-weather,
-#custom-theme-switcher {
-  padding: 0px 8px;
-  margin: 8px 4px;
-  color: @main-color;
-  background: alpha(darker(@main-color), 0.8);
-  border-radius: 10px;
-}
+/* ── Idle inhibitor and tray ─────────────────────────────────────────────── */
+#idle_inhibitor,
 #tray {
-  padding: 0px 8px;
-    margin: 4px 2px 4px 2px;
-  background: alpha(@color12,0.3);
-  border-radius: 5px;
-  color: lighter(@main-color);
+  margin: 4px 2px;
+  padding: 0 5px;
+  background-color: transparent;
+  color: @muted;
 }
 
-#custom-menu,
-#custom-power {
-  padding: 0px 8px;
-  margin: 6px 6px 6px 4px;
-  background: alpha(@color12,0.3);
-  border-radius: 5px;
-  color: lighter(@main-color);
+#idle_inhibitor.activated {
+  color: @green;
 }
 
-
-#clock {
-  padding: 0px 8px;
-  margin: 5px 2px 5px 4px;
-  background: alpha(@color12,0.3);
-  border-radius: 5px;
-  color: lighter(@main-color);
+#idle_inhibitor.deactivated {
+  color: @muted;
 }
 
-#power,
-#bluetooth,
+#tray {
+  padding: 0 4px;
+}
 
+/* ── Language ────────────────────────────────────────────────────────────── */
+#language {
+  padding: 0 9px;
+  color: @cyan;
+}
 
-#mpd,
+#language.ru {
+  color: @purple;
+}
+
+/* ── Weather ─────────────────────────────────────────────────────────────── */
+#custom-weather {
+  padding: 0 9px;
+  color: @fg;
+}
+
+/* ── Audio / network / bluetooth / battery capsule ──────────────────────── */
+#system {
+  padding: 2px 5px;
+}
+
 #pulseaudio,
+#network,
+#bluetooth,
+#battery {
+  margin: 0 1px;
+  padding: 0 6px;
+  background-color: transparent;
+  border-radius: 8px;
+}
 
-#battery,
+#pulseaudio {
+  color: @cyan;
+}
 
+#pulseaudio.muted {
+  color: @muted;
+}
 
-#mpris{
- padding: 4px 4px;
-  color: lighter(@main-color);
+#network {
+  color: @blue;
+}
+
+#network.disconnected,
+#network.disabled,
+#network.linked {
+  color: @muted;
+}
+
+#bluetooth {
+  color: @purple;
+}
+
+#bluetooth.off,
+#bluetooth.disabled,
+#bluetooth.no-controller {
+  color: @muted;
+}
+
+#battery {
+  color: @green;
+}
+
+#battery.charging,
+#battery.full {
+  color: @green;
+}
+
+#battery.warning {
+  color: @yellow;
+}
+
+#battery.critical {
+  color: @red;
+}
+
+/* ── Clock (right-most accent) ───────────────────────────────────────────── */
+#clock {
+  padding: 0 12px;
+  background-color: alpha(@blue, 0.14);
+  border: 1px solid alpha(@blue, 0.28);
+  color: @cyan;
+}
+
+#clock:hover {
+  background-color: alpha(@blue, 0.22);
 }

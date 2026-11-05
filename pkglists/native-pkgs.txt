@@ -46,6 +46,7 @@ nvidia-utils
 obsidian
 opencl-nvidia
 opencode
+pacman-contrib
 pavucontrol
 pipewire-alsa
 pipewire-pulse
