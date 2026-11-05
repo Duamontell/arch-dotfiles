@@ -20,7 +20,13 @@ window#waybar {
     border: 1px solid @border-col;
     border-radius: 12px;
     padding: 2px 6px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* Если окна нет — полностью убираем центральную капсулу */
+window#waybar.empty .modules-center {
+    background: transparent;
+    border-color: transparent;
+    padding: 0;
 }
 
 /* WORKSPACES */
@@ -60,13 +66,12 @@ window#waybar {
     padding: 0 10px;
 }
 
-window#waybar.empty #window {
-    background: transparent;
-    border: none;
-}
-
 /* RIGHT MODULES: общий стиль элементов внутри правой капсулы */
 #tray,
+#network,
+#bluetooth,
+#pulseaudio,
+#battery,
 #custom-weather,
 #language,
 #clock {
@@ -78,6 +83,49 @@ window#waybar.empty #window {
 
 #tray {
     color: @fg;
+}
+
+#network {
+    color: @green;
+}
+
+#network.disconnected,
+#network.disabled {
+    color: @red;
+}
+
+#bluetooth {
+    color: @blue;
+}
+
+#bluetooth.disabled,
+#bluetooth.off {
+    color: @fg-muted;
+}
+
+#pulseaudio {
+    color: @magenta;
+}
+
+#pulseaudio.muted {
+    color: @red;
+}
+
+#battery {
+    color: @green;
+}
+
+#battery.charging,
+#battery.plugged {
+    color: @cyan;
+}
+
+#battery.warning {
+    color: @yellow;
+}
+
+#battery.critical {
+    color: @red;
 }
 
 #custom-weather {
@@ -93,6 +141,11 @@ window#waybar.empty #window {
 }
 
 /* Эффект подсветки при наведении */
+#tray:hover,
+#network:hover,
+#bluetooth:hover,
+#pulseaudio:hover,
+#battery:hover,
 #custom-weather:hover,
 #language:hover,
 #clock:hover {
