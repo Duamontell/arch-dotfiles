@@ -3,6 +3,7 @@ base
 base-devel
 bat
 bluez
+bluez-obex
 bluez-utils
 brightnessctl
 btop
