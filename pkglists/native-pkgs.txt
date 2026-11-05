@@ -35,6 +35,7 @@ mesa
 mpv
 nano
 networkmanager
+networkmanager-dmenu
 niri
 noto-fonts-cjk
 noto-fonts-emoji
