@@ -175,6 +175,8 @@ cursor {
 }
 
 // spawn-at-startup "noctalia"
+spawn-at-startup "awww-daemon"
+spawn-at-startup "waybar"
 spawn-at-startup "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
 // To run a shell command (with variables, pipes, etc.), use spawn-sh-at-startup:
