@@ -27,15 +27,6 @@ for opt in "${set_opts[@]}"; do
 done
 unset opt set_opts
 
-function y() {
-  local tmp="$(mktemp -t "yazi-cwd.XXXXX")"
-  command yazi "$@" --cwd-file="$tmp"
-  if cwd="$(<"$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-    builtin cd -- "$cwd"
-  fi
-  rm -f -- "$tmp"
-}
-
 if [[ $TERM != "dumb" ]] && command -v starship &> /dev/null; then
   eval "$(starship init zsh)"
 fi
@@ -69,3 +60,6 @@ fi
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
 
 
+
+# Unity CLI
+case ":${PATH}:" in *:"$HOME/.local/bin":*) ;; *) export PATH="$HOME/.local/bin:$PATH" ;; esac
