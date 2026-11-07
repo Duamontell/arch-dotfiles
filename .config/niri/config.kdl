@@ -76,6 +76,7 @@ input {
 layout {
     gaps 16
 
+    background-color "transparent"
     center-focused-column "never"
 
     // You can customize the widths that "switch-preset-column-width" (Mod+R) toggles between.
@@ -280,6 +281,11 @@ window-rule {
 /-window-rule {
     geometry-corner-radius 12
     clip-to-geometry true
+}
+
+layer-rule {
+    match namespace="^awww-daemon$"
+    place-within-backdrop true
 }
 
 binds {
