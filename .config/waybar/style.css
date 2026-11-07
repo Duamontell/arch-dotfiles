@@ -30,10 +30,40 @@ tooltip label {
   font-size: 13px;
 }
 
+/* ── Tray context menu ──────────────────────────────────────────────────── */
+menu,
+#tray menu {
+  background-color: @bg_dark;
+  border: 1px solid @blue;
+  border-radius: 8px;
+  padding: 4px;
+  color: @fg;
+}
+
+menuitem,
+menu menuitem {
+  color: @fg;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+menuitem:hover,
+menu menuitem:hover {
+  background-color: #3b4261;
+  color: @cyan;
+}
+
+menu separator {
+  background-color: @muted;
+  min-height: 1px;
+  margin: 3px 6px;
+}
+
 /* ── Shared capsule look ─────────────────────────────────────────────────── */
 #workspaces,
 #info,
 #window,
+#tray,
 #language,
 #custom-weather,
 #system,
@@ -44,15 +74,18 @@ tooltip label {
 
 #workspaces,
 #info,
+#tray,
 #language,
 #custom-weather,
-#system {
+#system,
+#clock {
   background-color: alpha(@bg_dark, 0.55);
   border: 1px solid alpha(@blue, 0.08);
 }
 
 /* ── Workspaces ──────────────────────────────────────────────────────────── */
 #workspaces {
+  margin-left: 4px;
   padding: 2px 4px;
 }
 
@@ -97,8 +130,8 @@ tooltip label {
 }
 
 #custom-info-toggle {
-  padding: 0 4px;
-  margin-right: 2px; 
+  min-width: 20px;
+  padding: 0 2px 0 0;
   background-color: transparent;
   color: @blue;
 }
@@ -144,8 +177,7 @@ window#waybar.empty #window {
 }
 
 /* ── Idle inhibitor and tray ─────────────────────────────────────────────── */
-#idle_inhibitor,
-#tray {
+#idle_inhibitor {
   margin: 4px 2px;
   padding: 0 5px;
   background-color: transparent;
@@ -161,7 +193,7 @@ window#waybar.empty #window {
 }
 
 #tray {
-  padding: 0 4px;
+  padding: 0 8px;
 }
 
 /* ── Language ────────────────────────────────────────────────────────────── */
@@ -240,14 +272,14 @@ window#waybar.empty #window {
   color: @red;
 }
 
-/* ── Clock (right-most accent) ───────────────────────────────────────────── */
+/* ── Clock (right-most capsule) ──────────────────────────────────────────── */
 #clock {
+  margin-right: 4px;
   padding: 0 12px;
-  background-color: alpha(@blue, 0.14);
-  border: 1px solid alpha(@blue, 0.28);
-  color: @cyan;
+  color: @fg;
 }
 
 #clock:hover {
-  background-color: alpha(@blue, 0.22);
+  background-color: alpha(@bg_dark, 0.75);
+  color: @cyan;
 }

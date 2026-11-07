@@ -24,6 +24,8 @@
 
   "custom/info-toggle": {
     "format": "󰁙",
+    "align": 0.5,
+    "justify": "center",
     "tooltip": false,
     "on-click": "kitty --title btop sh -c 'btop'"
   },
@@ -37,9 +39,8 @@
   "memory": {
     "interval": 5,
     "format": "{used:0.1f}G 󰾆",
-    "format-alt": "{percentage}% 󰾆",
-    "format-alt-click": "click",
     "tooltip": true,
+    "tooltip-format": "{used:0.1f}GB/{total:0.1f}GB",
     "on-click": "kitty --title btop sh -c 'btop'"
   },
 
@@ -86,7 +87,7 @@
 
   // ═══ Right: keyboard layout ═══════════════════════════════════════════════
   "niri/language": {
-    "format": "{}",
+    "format": "󰌌 {}",
     "format-en": "en",
     "format-us": "en",
     "format-ru": "ru"
@@ -219,6 +220,7 @@
     "tooltip-format": "<span color='#7dcfff'><b>{:%A, %d %B %Y}</b></span>\n<tt><small>{calendar}</small></tt>",
     "calendar": {
       "mode": "month",
+      "mode-mon-col": 3,
       "weeks-pos": "right",
       "on-scroll": 1,
       "iso8601": true,
