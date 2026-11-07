@@ -48,10 +48,7 @@
     "interval": 5,
     // Keep the old sensor list: Waybar takes the first path that exists.
     // hwmon6 is dynamic, so thermal_zone0 is the stable fallback here.
-    "hwmon-path": [
-      "/sys/class/hwmon/hwmon6/temp1_input",
-      "/sys/class/thermal/thermal_zone0/temp"
-    ],
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
     "critical-threshold": 82,
     "format": "{temperatureC}°C 󰈸",
     "format-critical": "{temperatureC}°C 󰈸",
