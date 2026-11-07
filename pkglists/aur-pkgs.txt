@@ -2,4 +2,5 @@ bibata-cursor-theme-bin
 bluetuith
 paru
 paru-debug
+unityhub
 v2rayn
