@@ -19,7 +19,9 @@ git
 greetd
 greetd-tuigreet
 helix
+hypridle
 hyprland
+hyprlock
 intel-ucode
 keepassxc
 kitty
