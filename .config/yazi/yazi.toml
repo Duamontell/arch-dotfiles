@@ -9,5 +9,5 @@ edit = [
 [open]
 rules = [
     { mime = "text/*", use = "edit" },
-    { url = "*.json", use = "edit" },
+    { url = "*.{yml,yaml,toml,json,md,txt,conf,ini,sh,py,lua}", use = "edit" },
 ]
