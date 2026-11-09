@@ -1,0 +1,28 @@
+symbolPreset: nerd
+composer:
+  shape: band
+  tokenRate: false
+theme:
+  dark: titanium
+update:
+  auto: false
+setupVersion: 3
+modelRoles:
+  default: deepseek/deepseek-flash:max
+  vision: deepseek/deepseek-flash:max
+  plan: deepseek/deepseek-flash:max
+  advisor: deepseek/deepseek-flash:max
+retry:
+  fallbackChains:
+    default:
+      - web/deepseek
+      - web/zai
+      - web/kimi
+cycleOrder:
+  - default
+  - smol
+  - slow
+tools:
+  approvalMode: write
+error:
+  notify: "on"

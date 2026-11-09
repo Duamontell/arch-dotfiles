@@ -1,5 +1,6 @@
 bibata-cursor-theme-bin
 bluetuith
+oh-my-pi-bin
 paru
 paru-debug
 unityhub
