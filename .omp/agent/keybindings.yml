@@ -1,5 +1,5 @@
 app.plan.toggle:
-  - Ctrl+Shift+P
   - Alt+Shift+P
+  - Alt+Z
 
 # app.model.selectTemporary: []
