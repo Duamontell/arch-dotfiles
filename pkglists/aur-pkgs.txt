@@ -3,5 +3,6 @@ bluetuith
 oh-my-pi-bin
 paru
 paru-debug
+throne-bin
 unityhub
 v2rayn
