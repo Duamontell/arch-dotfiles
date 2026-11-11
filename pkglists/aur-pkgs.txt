@@ -9,3 +9,4 @@ paru-debug
 throne-bin
 unityhub
 v2rayn
+vesktop-bin

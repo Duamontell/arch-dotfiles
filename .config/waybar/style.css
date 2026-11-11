@@ -90,9 +90,9 @@ menu separator {
 }
 
 #workspaces button {
-  min-width: 20px;
+  min-width: 0;
   min-height: 20px;
-  padding: 0 6px;
+  padding: 0 12px;
   margin: 0 1px;
   border-radius: 8px;
   background-color: transparent;

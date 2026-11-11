@@ -33,5 +33,6 @@
   },
   "prompt": {
     "image_preview": false
-  }
+  },
+  "plugins": ["./herdr-opencode"]
 }
