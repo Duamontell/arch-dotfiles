@@ -1,5 +1,8 @@
 bibata-cursor-theme-bin
 bluetuith
+herdr-app-desktop-bin
+herdr-bin
+herdr-core-bin
 oh-my-pi-bin
 paru
 paru-debug
