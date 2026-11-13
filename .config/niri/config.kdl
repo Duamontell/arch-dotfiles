@@ -234,7 +234,7 @@ window-rule {
     match app-id="org.telegram.desktop"
     match app-id="vesktop"
     open-on-workspace "4"
-    open-focused false
+    // open-focused false
 }
 
 window-rule {
@@ -305,10 +305,10 @@ binds {
     // shows a list of important hotkeys.
     Mod+Shift+Slash { show-hotkey-overlay; }
 
-    // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return hotkey-overlay-title="Open a Terminal: alacritty" { spawn "kitty"; }
     Mod+D hotkey-overlay-title="Run an Application: fuzzel" { spawn "fuzzel"; }
     Mod+L hotkey-overlay-title="Lock the Screen: hyprlock" { spawn "loginctl" "lock-session"; }
+    Mod+Semicolon { spawn "rofimoji" "--selector" "fuzzel" "--action" "type" "copy" "--files" "all"; }
 
     // Use spawn-sh to run a shell command. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument. It's passed verbatim to `sh -c`.
