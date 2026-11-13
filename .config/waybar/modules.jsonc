@@ -161,7 +161,7 @@
     "tooltip-format-disconnected": "Disconnected",
     "tooltip-format-disabled": "Network disabled",
     "on-click": "networkmanager_dmenu",
-    "on-click-right": "kitty --title nmtui sh -c 'nmtui'"
+    "on-click-right": "nm-connection-editor"
   },
 
   "bluetooth": {

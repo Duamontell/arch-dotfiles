@@ -42,6 +42,7 @@ nano
 networkmanager
 networkmanager-dmenu
 niri
+nm-connection-editor
 noto-fonts-cjk
 noto-fonts-emoji
 nvidia-open
@@ -60,6 +61,7 @@ power-profiles-daemon
 rclone
 reflector
 ripgrep
+rofimoji
 snap-pac
 snapper
 starship

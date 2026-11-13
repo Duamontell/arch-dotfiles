@@ -225,8 +225,16 @@ workspace "8"
 // }
 
 window-rule {
+    match app-id="firefox"
+    open-on-workspace "1"
+    open-focused false
+}
+
+window-rule {
     match app-id="org.telegram.desktop"
+    match app-id="vesktop"
     open-on-workspace "4"
+    open-focused false
 }
 
 window-rule {
@@ -237,12 +245,15 @@ window-rule {
 
 window-rule {
     match app-id="Throne"
+    match app-id="v2rayN"
     open-on-workspace "5"
+    
 }
 
 window-rule {
-    // match app-id="org.gnome.Nautilus" title=r#"^(Open|Save) [Ff]ile$"#
     match app-id="org.gnome.Nautilus"
+    match app-id="nm-connection-editor"
+    match app-id="org.pulseaudio.pavucontrol"
     open-floating true
 }
 
