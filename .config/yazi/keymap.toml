@@ -1,0 +1,28 @@
+[[mgr.prepend_keymap]]
+on = "l"
+run = "plugin smart-enter"
+desc = "Enter the child directory, or open the file"
+
+[[mgr.prepend_keymap]]
+on = "!"
+run = 'shell "$SHELL" --block'
+desc = "Open $SHELL here"
+for = "unix"
+
+[[mgr.prepend_keymap]]
+on = "y"
+run = [
+    'shell -- for path in %s; do echo "file://$path"; done | wl-copy -t text/uri-list',
+    "yank",
+]
+desc = "Yank and copy URI to Wayland clipboard"
+
+[[mgr.prepend_keymap]]
+on = ["g", "r"]
+run = 'shell -- ya emit cd "$(git rev-parse --show-toplevel)"'
+desc = "cd to git root"
+
+[[input.prepend_keymap]]
+on = "<Esc>"
+run = "close"
+desc = "Cancel input"
