@@ -4,8 +4,10 @@ herdr-app-desktop-bin
 herdr-bin
 herdr-core-bin
 oh-my-pi-bin
+parsec-bin
 paru
 paru-debug
+rustdesk-bin
 throne-bin
 unityhub
 v2rayn

@@ -16,6 +16,7 @@ fastfetch
 fd
 firefox
 fuzzel
+ggml-cuda
 git
 greetd
 greetd-tuigreet
@@ -34,6 +35,7 @@ lib32-vulkan-intel
 linux
 linux-firmware
 linux-headers
+llama-cpp
 man-db
 man-pages
 mesa
@@ -49,6 +51,7 @@ nvidia-open
 nvidia-prime
 nvidia-settings
 nvidia-utils
+nvtop
 obsidian
 opencl-nvidia
 opencode
@@ -80,6 +83,7 @@ wl-clipboard
 wtype
 xwayland-satellite
 yazi
+zed
 zram-generator
 zsh
 zsh-autosuggestions
